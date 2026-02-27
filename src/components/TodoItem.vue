@@ -51,9 +51,7 @@ function handleKeydown(e: KeyboardEvent) {
         />
         <span class="checkmark" />
       </label>
-      <span class="todo-text" @dblclick="emit('startEdit', todo.id)">
-        {{ todo.text }}
-      </span>
+      <span class="todo-text" @dblclick="emit('startEdit', todo.id)" v-html="todo.text" />
       <button
         class="delete-btn"
         @click="emit('remove', todo.id)"
