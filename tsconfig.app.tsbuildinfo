@@ -1,0 +1,1 @@
+{"root":["./src/main.ts","./src/__tests__/app.test.ts","./src/__tests__/todoitem.test.ts","./src/__tests__/usetodos.test.ts","./src/composables/usetodos.ts","./src/types/todo.ts","./src/app.vue","./src/components/todoitem.vue","./env.d.ts"],"version":"5.6.3"}
