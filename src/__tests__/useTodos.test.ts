@@ -87,7 +87,7 @@ describe('useTodos', () => {
       expect(todos.value[0].title).toBe('Updated Title');
     });
 
-    it('should update updatedAt timestamp', () => {
+    it('should update updatedAt timestamp', async () => {
       const { todos, addTodo, updateTodo } = useTodos();
       
       addTodo({
@@ -99,14 +99,16 @@ describe('useTodos', () => {
         tags: [],
       });
 
-      const id = todos.value[0].id;
-      const originalUpdatedAt = todos.value[0].updatedAt;
+      const id = todos.value[0]?.id;
+      const originalUpdatedAt = todos.value[0]?.updatedAt;
       
       // Wait a bit to ensure timestamp changes
-      setTimeout(() => {
+      await new Promise(resolve => setTimeout(resolve, 10));
+      
+      if (id) {
         updateTodo(id, { title: 'Updated' });
-        expect(todos.value[0].updatedAt).not.toBe(originalUpdatedAt);
-      }, 10);
+        expect(todos.value[0]?.updatedAt).not.toBe(originalUpdatedAt);
+      }
     });
   });
 
