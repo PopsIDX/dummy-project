@@ -1,0 +1,9 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "types": ["vitest/globals", "@vue/test-utils"],
+    "strict": false,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/__tests__/**/*.ts"]
+}

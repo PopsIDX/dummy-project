@@ -71,11 +71,16 @@ export function useTodos() {
   const updateTodo = (id: string, updates: Partial<Omit<Todo, 'id' | 'createdAt'>>) => {
     const index = todos.value.findIndex((t) => t.id === id);
     if (index !== -1) {
-      todos.value[index] = {
-        ...todos.value[index],
-        ...updates,
-        updatedAt: new Date().toISOString(),
-      };
+      const currentTodo = todos.value[index];
+      if (currentTodo) {
+        todos.value[index] = {
+          ...currentTodo,
+          ...updates,
+          id: currentTodo.id,
+          createdAt: currentTodo.createdAt,
+          updatedAt: new Date().toISOString(),
+        };
+      }
     }
   };
 
